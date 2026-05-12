@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer-motion";
 
 import {
@@ -8,6 +9,9 @@ import {
   Users,
   GraduationCap,
   MapPin,
+  Shield,
+  Heart,
+  ArrowRight,
 } from "lucide-react";
 
 const fadeUp = {
@@ -26,24 +30,26 @@ export default function QuienesSomosPage() {
     <main className="overflow-hidden bg-[#0A0A0A] text-white">
       {/* HERO */}
       <section className="relative overflow-hidden border-b border-white/10">
-        {/* BG EFFECTS */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(217,4,41,0.20),transparent_40%)]" />
+        {/* BG */}
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(217,4,41,0.20),transparent_40%)]" />
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1 }}
-          className="absolute -left-32 top-10 h-72 w-72 rounded-full bg-[#D90429]/10 blur-3xl"
-        />
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1 }}
+            className="absolute -left-32 top-10 h-72 w-72 rounded-full bg-[#D90429]/10 blur-3xl"
+          />
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1.2 }}
-          className="absolute bottom-0 right-0 h-80 w-80 rounded-full bg-red-500/10 blur-3xl"
-        />
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1.2 }}
+            className="absolute bottom-0 right-0 h-80 w-80 rounded-full bg-red-500/10 blur-3xl"
+          />
+        </div>
 
-        <div className="mx-auto grid max-w-7xl gap-14 px-6 py-24 lg:grid-cols-2 lg:items-center">
+        <div className="relative mx-auto grid max-w-7xl gap-16 px-6 py-24 lg:grid-cols-2 lg:items-center">
           {/* TEXT */}
           <motion.div
             initial="hidden"
@@ -51,33 +57,39 @@ export default function QuienesSomosPage() {
             variants={fadeUp}
             transition={{ duration: 0.7 }}
           >
-            <p className="mb-4 text-sm font-bold uppercase tracking-[0.3em] text-[#D90429]">
-              Atlético EFIS
-            </p>
+            <div className="inline-flex items-center gap-2 rounded-full border border-[#D90429]/30 bg-[#D90429]/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.3em] text-[#D90429] backdrop-blur-xl">
+              🔴⚫ Atlético EFIS
+            </div>
 
-            <h1 className="max-w-2xl text-5xl font-black uppercase leading-none md:text-6xl">
-              Formación, competencia y pasión por el voleibol
+            <h1 className="mt-8 max-w-3xl text-5xl font-black uppercase leading-none md:text-7xl">
+              Formación,
+              <span className="block text-[#D90429]">
+                competencia
+              </span>
+              y comunidad
             </h1>
 
-            <p className="mt-8 max-w-xl text-lg leading-relaxed text-[#9CA3AF]">
-              Atlético EFIS Voley Punitaqui es un club deportivo
-              enfocado en el desarrollo técnico y competitivo del
-              voleibol regional, formando jugadores y jugadoras en
-              distintas categorías tanto damas como varones.
+            <p className="mt-8 max-w-2xl text-lg leading-relaxed text-[#9CA3AF]">
+              Atlético EFIS Voley nace como un proyecto deportivo
+              enfocado en el crecimiento del voleibol regional,
+              impulsando espacios formativos y competitivos para
+              niños, jóvenes y adultos en Punitaqui y Ovalle.
             </p>
 
             <div className="mt-10 flex flex-wrap gap-4">
-              <div className="rounded-full border border-[#D90429]/30 bg-[#D90429]/10 px-5 py-3 text-sm font-bold uppercase tracking-wide text-white">
-                Punitaqui
-              </div>
-
-              <div className="rounded-full border border-white/10 bg-white/5 px-5 py-3 text-sm font-bold uppercase tracking-wide text-white">
-                Ovalle
-              </div>
-
-              <div className="rounded-full border border-white/10 bg-white/5 px-5 py-3 text-sm font-bold uppercase tracking-wide text-white">
-                Formación & Competencia
-              </div>
+              {[
+                "Punitaqui",
+                "Ovalle",
+                "Formación",
+                "Competencia",
+              ].map((item) => (
+                <div
+                  key={item}
+                  className="rounded-full border border-white/10 bg-white/5 px-5 py-3 text-sm font-bold uppercase tracking-wide text-white backdrop-blur-xl"
+                >
+                  {item}
+                </div>
+              ))}
             </div>
           </motion.div>
 
@@ -100,10 +112,10 @@ export default function QuienesSomosPage() {
                 duration: 6,
                 ease: "easeInOut",
               }}
-              className="absolute -inset-4 rounded-[32px] bg-[#D90429]/20 blur-3xl"
+              className="absolute -inset-4 rounded-[40px] bg-[#D90429]/20 blur-3xl"
             />
 
-            <div className="relative overflow-hidden rounded-[32px] border border-white/10">
+            <div className="relative overflow-hidden rounded-[40px] border border-white/10">
               <Image
                 src="/galeria/img-efis-todos.jpg"
                 alt="Atlético EFIS"
@@ -113,7 +125,118 @@ export default function QuienesSomosPage() {
                 priority
               />
 
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
+
+              <div className="absolute bottom-0 left-0 right-0 p-8">
+                <p className="text-sm font-bold uppercase tracking-[0.3em] text-[#D90429]">
+                  Desde 2024
+                </p>
+
+                <h3 className="mt-3 text-3xl font-black uppercase">
+                  Atlético EFIS
+                </h3>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* HISTORIA */}
+      <section className="relative border-b border-white/5 py-28">
+        <div className="absolute left-1/2 top-0 h-[400px] w-[400px] -translate-x-1/2 rounded-full bg-[#D90429]/10 blur-3xl" />
+
+        <div className="mx-auto grid max-w-7xl gap-14 px-6 lg:grid-cols-[1fr_1.1fr] lg:items-center">
+          {/* IMAGE */}
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeUp}
+            transition={{ duration: 0.6 }}
+            className="relative"
+          >
+            <div className="relative overflow-hidden rounded-[36px] border border-[#D90429]/20">
+              <Image
+                src="/galeria/fundador.jpeg"
+                alt="Felipe Vega"
+                width={900}
+                height={1200}
+                className="h-[650px] w-full object-cover object-top"
+              />
+
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
+
+              <div className="absolute bottom-0 left-0 right-0 p-8">
+                <div className="inline-flex items-center gap-2 rounded-full border border-[#D90429]/30 bg-[#D90429]/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.25em] text-[#D90429] backdrop-blur-xl">
+                  🔴 Fundación del Club
+                </div>
+
+                <h3 className="mt-6 text-4xl font-black uppercase">
+                  Felipe Vega
+                </h3>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* TEXT */}
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeUp}
+            transition={{
+              duration: 0.6,
+              delay: 0.1,
+            }}
+          >
+            <p className="text-sm font-bold uppercase tracking-[0.3em] text-[#D90429]">
+              Nuestra Historia
+            </p>
+
+            <h2 className="mt-5 text-4xl font-black uppercase leading-tight md:text-5xl">
+              Un proyecto que nació
+              <span className="block text-[#D90429]">
+                desde la pasión
+              </span>
+            </h2>
+
+            <div className="mt-8 space-y-6 text-lg leading-relaxed text-[#9CA3AF]">
+              <p>
+                Atlético EFIS comenzó como una iniciativa deportiva
+                impulsada por Felipe Vega y profesores de educación
+                física con el objetivo de generar espacios de
+                desarrollo para jóvenes deportistas.
+              </p>
+
+              <p>
+                Aunque el proyecto inicialmente estaba ligado al
+                fútbol, el voleibol terminó convirtiéndose en la
+                verdadera identidad del club, consolidándose
+                oficialmente el 24 de junio de 2024.
+              </p>
+
+              <p>
+                Actualmente el club trabaja con más de 50
+                deportistas activos, promoviendo valores como el
+                respeto, la disciplina, el esfuerzo y el trabajo en
+                equipo.
+              </p>
+            </div>
+
+            <div className="mt-10 grid gap-4 sm:grid-cols-2">
+              {[
+                "Trabajo en equipo",
+                "Disciplina",
+                "Respeto",
+                "Perseverancia",
+              ].map((item) => (
+                <div
+                  key={item}
+                  className="rounded-2xl border border-white/10 bg-white/[0.03] p-5 text-center font-semibold uppercase tracking-wide text-white"
+                >
+                  {item}
+                </div>
+              ))}
             </div>
           </motion.div>
         </div>
@@ -126,22 +249,22 @@ export default function QuienesSomosPage() {
             {
               icon: Trophy,
               title: "Competencia",
-              desc: "Participación activa en torneos oficiales, federados y competencias regionales del norte de Chile.",
+              desc: "Participación activa en ligas, torneos regionales y competencias federadas.",
             },
             {
               icon: GraduationCap,
               title: "Formación",
-              desc: "Entrenamientos enfocados en el desarrollo técnico, táctico y físico para categorías formativas y adultas.",
+              desc: "Entrenamientos orientados al crecimiento técnico, físico y táctico.",
             },
             {
               icon: Users,
               title: "Comunidad",
-              desc: "Un ambiente deportivo basado en compañerismo, disciplina y crecimiento colectivo.",
+              desc: "Un entorno deportivo basado en compañerismo y desarrollo humano.",
             },
             {
               icon: MapPin,
-              title: "Punitaqui",
-              desc: "Representando con orgullo a Punitaqui y expandiendo su actividad deportiva también hacia Ovalle.",
+              title: "Región",
+              desc: "Representando con orgullo a Punitaqui y expandiendo actividad hacia Ovalle.",
             },
           ].map((item, index) => {
             const Icon = item.icon;
@@ -160,9 +283,9 @@ export default function QuienesSomosPage() {
                 whileHover={{
                   y: -8,
                 }}
-                className="group rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur transition-all duration-300 hover:border-[#D90429]/20 hover:bg-white/[0.07]"
+                className="group rounded-[32px] border border-white/10 bg-white/5 p-8 backdrop-blur transition-all duration-300 hover:border-[#D90429]/20 hover:bg-white/[0.07]"
               >
-                <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-[#D90429]/10 transition-all duration-300 group-hover:bg-[#D90429]/20">
+                <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-[#D90429]/10">
                   <Icon
                     className="text-[#D90429]"
                     size={34}
@@ -182,77 +305,11 @@ export default function QuienesSomosPage() {
         </div>
       </section>
 
-      {/* TORNEOS */}
-      <section className="border-b border-white/5 py-24">
+      {/* LIGA */}
+      <section className="border-b border-white/5 py-28">
         <div className="mx-auto max-w-7xl px-6">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeUp}
-            transition={{ duration: 0.6 }}
-          >
-            <p className="mb-4 text-sm font-bold uppercase tracking-[0.3em] text-[#D90429]">
-              Competencias
-            </p>
-
-            <h2 className="max-w-3xl text-4xl font-black uppercase leading-tight">
-              Participación activa en torneos regionales y federados
-            </h2>
-          </motion.div>
-
-          <div className="mt-14 grid gap-6 md:grid-cols-3">
-            {[
-              {
-                title: "ASVOLCO",
-                desc: "Participación en competencias oficiales federadas organizadas por ASVOLCO.",
-              },
-              {
-                title: "Livonor",
-                desc: "Presencia competitiva en la Liga de Voleibol del Norte, enfrentando clubes de toda la región.",
-              },
-              {
-                title: "Panadería La Estrella",
-                desc: "Participación en la Liga Provincial organizada por la Asociación Limarí.",
-              },
-            ].map((item, index) => (
-              <motion.div
-                key={item.title}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={fadeUp}
-                transition={{
-                  duration: 0.5,
-                  delay: index * 0.1,
-                }}
-                whileHover={{
-                  y: -6,
-                }}
-                className="group rounded-3xl border border-white/10 bg-[#111111] p-8 transition-all duration-300 hover:border-[#D90429]/20 hover:bg-[#161616]"
-              >
-                <div className="mb-6 h-1 w-16 rounded-full bg-[#D90429]" />
-
-                <h3 className="text-2xl font-black uppercase">
-                  {item.title}
-                </h3>
-
-                <p className="mt-4 leading-relaxed text-[#9CA3AF]">
-                  {item.desc}
-                </p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CATEGORIAS */}
-      <section className="relative py-24">
-        <div className="absolute left-1/2 top-0 h-72 w-72 -translate-x-1/2 rounded-full bg-[#D90429]/10 blur-3xl" />
-
-        <div className="mx-auto max-w-7xl px-6">
-          <div className="grid gap-16 lg:grid-cols-2">
-            {/* LEFT */}
+          <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr]">
+            {/* TEXT */}
             <motion.div
               initial="hidden"
               whileInView="visible"
@@ -260,49 +317,32 @@ export default function QuienesSomosPage() {
               variants={fadeUp}
               transition={{ duration: 0.6 }}
             >
-              <p className="mb-4 text-sm font-bold uppercase tracking-[0.3em] text-[#D90429]">
-                Categorías
+              <p className="text-sm font-bold uppercase tracking-[0.3em] text-[#D90429]">
+                Liga Provincial
               </p>
 
-              <h2 className="text-4xl font-black uppercase leading-tight">
-                Formación para todas las edades
+              <h2 className="mt-5 text-4xl font-black uppercase leading-tight md:text-5xl">
+                Panadería
+                <span className="block text-[#D90429]">
+                  La Estrella
+                </span>
               </h2>
 
-              <div className="mt-10 flex flex-wrap gap-4">
-                {[
-                  "Sub 12",
-                  "Sub 14",
-                  "Sub 16",
-                  "Todo Competidor",
-                  "Damas",
-                  "Varones",
-                ].map((item, index) => (
-                  <motion.div
-                    key={item}
-                    initial={{
-                      opacity: 0,
-                      scale: 0.8,
-                    }}
-                    whileInView={{
-                      opacity: 1,
-                      scale: 1,
-                    }}
-                    viewport={{ once: true }}
-                    transition={{
-                      delay: index * 0.05,
-                    }}
-                    whileHover={{
-                      scale: 1.05,
-                    }}
-                    className="rounded-full border border-[#D90429]/40 bg-[#D90429]/10 px-5 py-3 font-bold uppercase tracking-wide text-white transition-all duration-300 hover:bg-[#D90429]/20"
-                  >
-                    {item}
-                  </motion.div>
-                ))}
-              </div>
+              <p className="mt-8 text-lg leading-relaxed text-[#9CA3AF]">
+                Atlético EFIS participa activamente en la promoción
+                y fortalecimiento de la Liga Provincial Panadería La
+                Estrella, impulsando el crecimiento competitivo del
+                voleibol regional.
+              </p>
+
+              <p className="mt-6 text-lg leading-relaxed text-[#9CA3AF]">
+                El club ha conseguido importantes logros en distintas
+                categorías, consolidando un trabajo serio y formativo
+                junto a sus deportistas.
+              </p>
             </motion.div>
 
-            {/* RIGHT */}
+            {/* IMAGE */}
             <motion.div
               initial="hidden"
               whileInView="visible"
@@ -312,54 +352,67 @@ export default function QuienesSomosPage() {
                 duration: 0.6,
                 delay: 0.1,
               }}
+              className="rounded-[36px] border border-white/10 bg-gradient-to-br from-white/[0.04] to-transparent p-10"
             >
-              <p className="text-lg leading-relaxed text-[#9CA3AF]">
-                El club trabaja constantemente en el desarrollo del
-                voleibol formativo y competitivo, ofreciendo espacios
-                de entrenamiento para niños, jóvenes y adultos.
-              </p>
-
-              <p className="mt-6 text-lg leading-relaxed text-[#9CA3AF]">
-                Los entrenamientos son dirigidos por profesores
-                certificados por la Federación Chilena de Voleibol,
-                garantizando preparación técnica y metodológica de
-                calidad.
-              </p>
-
-              <motion.div
-                whileHover={{
-                  scale: 1.02,
-                }}
-                className="mt-10 rounded-3xl border border-white/10 bg-white/[0.03] p-8 backdrop-blur"
-              >
-                <p className="text-sm font-bold uppercase tracking-[0.3em] text-[#D90429]">
-                  Entrenamientos
-                </p>
-
-                <div className="mt-6 space-y-4">
-                  <div>
-                    <h3 className="text-xl font-black uppercase">
-                      Martes & Jueves
-                    </h3>
-
-                    <p className="mt-2 text-[#9CA3AF]">
-                      Desde las 18:10 hasta las 21:00 hrs
-                    </p>
-                  </div>
-
-                  <div>
-                    <h3 className="text-xl font-black uppercase">
-                      Punitaqui & Ovalle
-                    </h3>
-
-                    <p className="mt-2 text-[#9CA3AF]">
-                      Desarrollo formativo y competitivo
-                    </p>
-                  </div>
+              <div className="flex h-full items-center justify-center rounded-[32px] border border-white/10 bg-black/30 p-8">
+                <div className="relative aspect-square w-full max-w-[320px]">
+                  <Image
+                    src="/sponsors/sponsor1.jpg"
+                    alt="Panadería La Estrella"
+                    fill
+                    className="object-contain"
+                  />
                 </div>
-              </motion.div>
+              </div>
             </motion.div>
           </div>
+        </div>
+      </section>
+
+      {/* PROFESORES CTA */}
+      <section className="relative py-28">
+        <div className="absolute left-1/2 top-0 h-[300px] w-[300px] -translate-x-1/2 rounded-full bg-[#D90429]/10 blur-3xl" />
+
+        <div className="mx-auto max-w-5xl px-6 text-center">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeUp}
+            transition={{ duration: 0.6 }}
+          >
+            <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full border border-[#D90429]/20 bg-[#D90429]/10">
+              <Shield className="h-10 w-10 text-[#D90429]" />
+            </div>
+
+            <p className="mt-8 text-sm font-bold uppercase tracking-[0.3em] text-[#D90429]">
+              Staff Técnico
+            </p>
+
+            <h2 className="mt-5 text-4xl font-black uppercase leading-tight md:text-5xl">
+              Profesores y
+              <span className="block text-[#D90429]">
+                entrenadores
+              </span>
+            </h2>
+
+            <p className="mx-auto mt-8 max-w-3xl text-lg leading-relaxed text-[#9CA3AF]">
+              Conoce al equipo de entrenadores que lidera el
+              desarrollo formativo y competitivo de Atlético EFIS,
+              trabajando día a día junto a cada categoría del club.
+            </p>
+
+            <div className="mt-10 flex justify-center">
+              <Link
+                href="/profesores"
+                className="group inline-flex items-center gap-3 rounded-full bg-[#D90429] px-8 py-4 text-sm font-bold uppercase tracking-wide text-white transition-all duration-300 hover:scale-105 hover:bg-[#ef233c]"
+              >
+                Ver profesores
+
+                <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+              </Link>
+            </div>
+          </motion.div>
         </div>
       </section>
     </main>
