@@ -155,7 +155,7 @@ export default async function HomePage() {
   return (
     <div>
       <HeroSection />
-      <StatsSection stats={data.stats} />
+      <StatsSection />
 
       {/* SECCIÓN DE CATEGORÍAS Y HORARIOS */}
       <section className="bg-gradient-to-b from-zinc-950 via-orange-950/5 to-zinc-950 py-20">
