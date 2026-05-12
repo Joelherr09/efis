@@ -12,6 +12,8 @@ import { es } from "date-fns/locale";
 import FadeIn from "@/components/animations/FadeIn";
 import StaggerContainer from "@/components/animations/StaggerContainer";
 
+import { formatChileanDate } from "@/lib/date-utils";
+
 type Match = {
   id: string;
   fecha: string;
@@ -291,128 +293,133 @@ export default async function CalendarioPage() {
                     {/* MATCHES */}
                     <StaggerContainer className="space-y-4">
                       {matchesInMonth.map(
-                        (match, index) => (
-                          <FadeIn
-                            key={match.id}
-                            delay={index * 0.05}
-                          >
-                            <div className="group relative overflow-hidden rounded-[28px] border border-white/10 bg-gradient-to-r from-white/[0.04] to-white/[0.02] p-5 backdrop-blur-xl transition-all duration-500 hover:-translate-y-1 hover:border-[#D90429]/30 hover:shadow-2xl hover:shadow-[#D90429]/10">
-                              {/* Glow */}
-                              <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(217,4,41,0.15),transparent_40%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                        (match, index) => {
+                          const matchDate =
+                            new Date(match.fecha);
 
-                              <div className="relative flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
-                                {/* DATE */}
-                                <div className="flex items-center gap-4 md:w-44">
-                                  <div className="flex h-16 w-16 flex-col items-center justify-center rounded-2xl border border-[#D90429]/20 bg-[#D90429]/10">
-                                    <span className="text-2xl font-black text-[#D90429]">
-                                      {format(
-                                        new Date(
-                                          match.fecha
-                                        ),
-                                        "dd"
-                                      )}
-                                    </span>
+                          const day = format(
+                            matchDate,
+                            "dd"
+                          );
 
-                                    <span className="text-[10px] uppercase tracking-widest text-zinc-400">
-                                      {format(
-                                        new Date(
-                                          match.fecha
-                                        ),
-                                        "MMM",
-                                        {
-                                          locale: es,
-                                        }
-                                      )}
-                                    </span>
-                                  </div>
+                          const month = format(
+                            matchDate,
+                            "MMM",
+                            {
+                              locale: es,
+                            }
+                          );
 
-                                  <div>
-                                    <p className="text-sm font-bold capitalize text-white">
-                                      {format(
-                                        new Date(
-                                          match.fecha
-                                        ),
-                                        "EEEE",
-                                        {
-                                          locale: es,
-                                        }
-                                      )}
-                                    </p>
+                          const weekday = format(
+                            matchDate,
+                            "EEEE",
+                            {
+                              locale: es,
+                            }
+                          );
 
-                                    <p className="mt-1 flex items-center gap-1 text-xs text-zinc-500">
-                                      <Clock className="h-3 w-3" />
-                                      {format(
-                                        new Date(
-                                          match.fecha
-                                        ),
-                                        "HH:mm"
-                                      )}{" "}
-                                      hrs
-                                    </p>
-                                  </div>
-                                </div>
+                          const chileTime =
+                            formatChileanDate(
+                              match.fecha,
+                              "time"
+                            );
 
-                                {/* TEAMS */}
-                                <div className="flex flex-1 items-center justify-center gap-3 md:gap-6">
-                                  <div className="flex-1 text-right">
-                                    <p className="text-sm font-black uppercase tracking-wide text-white md:text-lg">
-                                      {match.equipo_local
-                                        ?.siglas || "TBD"}
-                                    </p>
+                          return (
+                            <FadeIn
+                              key={match.id}
+                              delay={index * 0.05}
+                            >
+                              <div className="group relative overflow-hidden rounded-[28px] border border-white/10 bg-gradient-to-r from-white/[0.04] to-white/[0.02] p-5 backdrop-blur-xl transition-all duration-500 hover:-translate-y-1 hover:border-[#D90429]/30 hover:shadow-2xl hover:shadow-[#D90429]/10">
+                                {/* Glow */}
+                                <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(217,4,41,0.15),transparent_40%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
 
-                                    <p className="mt-1 hidden text-xs text-zinc-500 md:block">
-                                      {
-                                        match.equipo_local
-                                          ?.nombre
-                                      }
-                                    </p>
-                                  </div>
+                                <div className="relative flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
+                                  {/* DATE */}
+                                  <div className="flex items-center gap-4 md:w-44">
+                                    <div className="flex h-16 w-16 flex-col items-center justify-center rounded-2xl border border-[#D90429]/20 bg-[#D90429]/10">
+                                      <span className="text-2xl font-black text-[#D90429]">
+                                        {day}
+                                      </span>
 
-                                  <div className="rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-xs font-black tracking-[0.25em] text-[#D90429]">
-                                    VS
-                                  </div>
-
-                                  <div className="flex-1 text-left">
-                                    <p className="text-sm font-black uppercase tracking-wide text-white md:text-lg">
-                                      {match.equipo_visita
-                                        ?.siglas || "TBD"}
-                                    </p>
-
-                                    <p className="mt-1 hidden text-xs text-zinc-500 md:block">
-                                      {
-                                        match.equipo_visita
-                                          ?.nombre
-                                      }
-                                    </p>
-                                  </div>
-                                </div>
-
-                                {/* INFO */}
-                                <div className="flex flex-col gap-2 md:w-56 md:items-end">
-                                  {match.torneo && (
-                                    <div className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 text-xs text-zinc-400">
-                                      🏆{" "}
-                                      {
-                                        match.torneo
-                                          .nombre
-                                      }
-                                    </div>
-                                  )}
-
-                                  {match.cancha && (
-                                    <div className="flex items-center gap-1 text-xs text-zinc-500">
-                                      <MapPin className="h-3 w-3" />
-
-                                      <span className="truncate">
-                                        {match.cancha}
+                                      <span className="text-[10px] uppercase tracking-widest text-zinc-400">
+                                        {month}
                                       </span>
                                     </div>
-                                  )}
+
+                                    <div>
+                                      <p className="text-sm font-bold capitalize text-white">
+                                        {weekday}
+                                      </p>
+
+                                      <p className="mt-1 flex items-center gap-1 text-xs text-zinc-500">
+                                        <Clock className="h-3 w-3" />
+                                        {chileTime} hrs
+                                      </p>
+                                    </div>
+                                  </div>
+
+                                  {/* TEAMS */}
+                                  <div className="flex flex-1 items-center justify-center gap-3 md:gap-6">
+                                    <div className="flex-1 text-right">
+                                      <p className="text-sm font-black uppercase tracking-wide text-white md:text-lg">
+                                        {match.equipo_local
+                                          ?.siglas || "TBD"}
+                                      </p>
+
+                                      <p className="mt-1 hidden text-xs text-zinc-500 md:block">
+                                        {
+                                          match.equipo_local
+                                            ?.nombre
+                                        }
+                                      </p>
+                                    </div>
+
+                                    <div className="rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-xs font-black tracking-[0.25em] text-[#D90429]">
+                                      VS
+                                    </div>
+
+                                    <div className="flex-1 text-left">
+                                      <p className="text-sm font-black uppercase tracking-wide text-white md:text-lg">
+                                        {match.equipo_visita
+                                          ?.siglas || "TBD"}
+                                      </p>
+
+                                      <p className="mt-1 hidden text-xs text-zinc-500 md:block">
+                                        {
+                                          match.equipo_visita
+                                            ?.nombre
+                                        }
+                                      </p>
+                                    </div>
+                                  </div>
+
+                                  {/* INFO */}
+                                  <div className="flex flex-col gap-2 md:w-56 md:items-end">
+                                    {match.torneo && (
+                                      <div className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 text-xs text-zinc-400">
+                                        🏆{" "}
+                                        {
+                                          match.torneo
+                                            .nombre
+                                        }
+                                      </div>
+                                    )}
+
+                                    {match.cancha && (
+                                      <div className="flex items-center gap-1 text-xs text-zinc-500">
+                                        <MapPin className="h-3 w-3" />
+
+                                        <span className="truncate">
+                                          {match.cancha}
+                                        </span>
+                                      </div>
+                                    )}
+                                  </div>
                                 </div>
                               </div>
-                            </div>
-                          </FadeIn>
-                        )
+                            </FadeIn>
+                          );
+                        }
                       )}
                     </StaggerContainer>
                   </div>
