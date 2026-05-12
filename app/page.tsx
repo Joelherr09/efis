@@ -495,7 +495,7 @@ export default async function HomePage() {
     {/* CONTENT */}
     <div className="absolute inset-x-0 bottom-0 z-10 p-8 md:p-10">
       <div className="translate-y-4 transition-transform duration-500 group-hover:translate-y-0">
-        <div className="inline-flex mb-26 items-center gap-2 rounded-full border border-[#D90429]/30 bg-[#D90429]/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.25em] text-[#D90429] backdrop-blur-xl">
+        <div className="inline-flex mb-26 items-center gap-2 rounded-full border border-[#D90429]/30 bg-[#D90429]/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.25em] text-zinc-200 backdrop-blur-xl">
           🔴 Fundación del Club
         </div>
 
