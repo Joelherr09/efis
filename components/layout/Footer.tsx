@@ -61,20 +61,6 @@ export default function Footer() {
               >
                 <InstagramIcon className="h-5 w-5" />
               </Link>
-              <Link
-                href="#"
-                target="_blank"
-                className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 text-[#9CA3AF] transition-all duration-300 hover:border-red-500/40 hover:text-white"
-              >
-                <FacebookIcon className="h-5 w-5" />
-              </Link>
-              <Link
-                href="#"
-                target="_blank"
-                className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 text-[#9CA3AF] transition-all duration-300 hover:border-red-500/40 hover:text-white"
-              >
-                <YoutubeIcon className="h-5 w-5" />
-              </Link>
             </div>
 
             {/* Créditos Estratégicos: UNO AL LADO DEL OTRO */}
