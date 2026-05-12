@@ -159,29 +159,7 @@ export default async function HomePage() {
       <HeroSection />
       <StatsSection />
 
-      {/* SECCIÓN DE CATEGORÍAS Y HORARIOS */}
-      <section className="bg-gradient-to-b from-zinc-950 via-orange-950/5 to-zinc-950 py-20">
-        <div className="mx-auto max-w-7xl px-6">
-          <div className="mb-12 text-center">
-            <p className="mb-2 text-sm font-bold uppercase tracking-[0.3em] text-orange-500">Entrena Con Nosotros</p>
-            <h2 className="text-4xl font-bold tracking-tight text-white md:text-5xl">Categorías y Horarios</h2>
-          </div>
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-            {["Sub 12 Damas", "Sub 14 Damas", "Sub 16 Damas", "Todo Competidor Varones"].map((cat, i) => (
-              <div key={i} className="rounded-2xl border border-white/10 bg-white/5 p-6 text-center backdrop-blur-sm transition-all hover:scale-105 hover:border-orange-500/30">
-                <Trophy className="mx-auto mb-3 h-8 w-8 text-orange-400" />
-                <h3 className="text-xl font-semibold text-white">{cat}</h3>
-                <p className="mt-2 text-sm text-zinc-400">Martes y Jueves • 18:10 - 21:00 hrs</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* TOURNAMENTS SECTION */}
-      <TournamentsSection menTournaments={data.menTournaments} womenTournaments={data.womenTournaments} />
-
-      {/* SECCIÓN "CONÓCENOS" + INFO DEL CLUB */}
+            {/* SECCIÓN "CONÓCENOS" + INFO DEL CLUB */}
       <section className="border-t border-white/5 py-20">
         <div className="mx-auto max-w-7xl px-6">
           <div className="grid gap-12 lg:grid-cols-2">
@@ -222,7 +200,27 @@ export default async function HomePage() {
         </div>
       </section>
 
-{/* GALERÍA DE IMÁGENES */}
+      {/* SECCIÓN DE CATEGORÍAS Y HORARIOS */}
+      <section className="bg-gradient-to-b from-zinc-950 via-orange-950/5 to-zinc-950 py-20">
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="mb-12 text-center">
+            <p className="mb-2 text-sm font-bold uppercase tracking-[0.3em] text-orange-500">Entrena Con Nosotros</p>
+            <h2 className="text-4xl font-bold tracking-tight text-white md:text-5xl">Categorías y Horarios</h2>
+          </div>
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+            {["Sub 12 Damas", "Sub 14 Damas", "Sub 16 Damas", "Todo Competidor Varones"].map((cat, i) => (
+              <div key={i} className="rounded-2xl border border-white/10 bg-white/5 p-6 text-center backdrop-blur-sm transition-all hover:scale-105 hover:border-orange-500/30">
+                <Trophy className="mx-auto mb-3 h-8 w-8 text-orange-400" />
+                <h3 className="text-xl font-semibold text-white">{cat}</h3>
+                <p className="mt-2 text-sm text-zinc-400">Martes y Jueves • 18:10 - 21:00 hrs</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+
+      {/* GALERÍA DE IMÁGENES */}
 <section className="relative overflow-hidden border-t border-white/10 bg-black py-28">
   {/* BACKGROUND EFFECTS */}
   <div className="absolute inset-0">
@@ -347,6 +345,13 @@ export default async function HomePage() {
       </div>
     </div>
   </section>
+
+      {/* TOURNAMENTS SECTION */}
+      <TournamentsSection menTournaments={data.menTournaments} womenTournaments={data.womenTournaments} />
+
+
+
+
 
       {/* SECCIÓN "INSCRÍBETE" (LLAMADA A LA ACCIÓN) */}
       <section className="relative overflow-hidden py-20">
