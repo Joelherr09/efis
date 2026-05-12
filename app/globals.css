@@ -128,3 +128,22 @@
     @apply font-sans;
   }
 }
+
+/* Animación para scroll continuo de logos */
+@keyframes scroll-x {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll-x {
+  animation: scroll-x 20s linear infinite;
+  width: fit-content;
+}
+
+.animate-scroll-x:hover {
+  animation-play-state: paused;
+}

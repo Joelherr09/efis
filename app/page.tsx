@@ -5,6 +5,7 @@ import StatsSection from "@/components/home/StatsSection";
 import TournamentsSection from "@/components/home/TournamentsSection";
 import { MapPin, Calendar, Clock, Phone, Mail, Users, Trophy, Heart } from "lucide-react";
 import { InstagramIcon } from "@/components/layout/SocialIcons";
+import SponsorsSection from "@/components/home/SponsorsSection";
 
 type Match = {
   estado?: string;
@@ -38,11 +39,12 @@ type TournamentWithStandings = {
 
 // Imágenes de la galería
 const galleryImages = [
-  { src: "/galeria/img-efis-1.jpg", alt: "Equipo EFIS en acción" },
-  { src: "/galeria/img-efis-2.jpg", alt: "Celebración de punto" },
-  { src: "/galeria/img-efis-3.jpg", alt: "Entrenamiento EFIS" },
-  { src: "/galeria/img-efis-4.jpg", alt: "Equipo completo" },
-  { src: "/galeria/img-efis-todos.jpg", alt: "Foto grupal EFIS" },
+  { src: "/galeria/img-efis-1.jpg", alt: " " },
+  { src: "/galeria/img-efis-2.jpg", alt: " " },
+  { src: "/galeria/img-efis-3.jpg", alt: " " },
+  { src: "/galeria/img-efis-4.jpg", alt: " " },
+  { src: "/galeria/img-efis-5.jpg", alt: " " },
+  { src: "/galeria/img-efis-todos.jpg", alt: " " },
 ];
 
 function extractMatches(response: any): Match[] {
@@ -220,23 +222,131 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* GALERÍA DE IMÁGENES */}
-      <section className="py-16 bg-zinc-900/30">
-        <div className="mx-auto max-w-7xl px-6">
-          <div className="mb-8 text-center">
-            <p className="mb-2 text-sm font-bold uppercase tracking-[0.3em] text-orange-500">Galería</p>
-            <h2 className="text-3xl font-bold text-white md:text-4xl">Nuestros momentos</h2>
-          </div>
-          <div className="grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-5">
-            {galleryImages.map((img, idx) => (
-              <div key={idx} className="group relative aspect-square overflow-hidden rounded-xl bg-zinc-800 transition-all hover:shadow-xl hover:shadow-orange-500/20">
-                <Image src={img.src} alt={img.alt} fill className="object-cover transition-transform duration-500 group-hover:scale-110" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
+{/* GALERÍA DE IMÁGENES */}
+<section className="relative overflow-hidden border-t border-white/10 bg-black py-28">
+  {/* BACKGROUND EFFECTS */}
+  <div className="absolute inset-0">
+    <div className="absolute left-1/2 top-0 h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-[#D90429]/10 blur-3xl" />
+
+    <div className="absolute bottom-0 right-0 h-[300px] w-[300px] rounded-full bg-red-500/5 blur-3xl" />
+
+    <div className="absolute left-0 top-40 h-[250px] w-[250px] rounded-full bg-white/5 blur-3xl" />
+  </div>
+
+  <div className="relative mx-auto max-w-7xl px-6">
+    {/* HEADER */}
+    <div className="mx-auto mb-20 max-w-3xl text-center">
+      <div className="inline-flex items-center gap-2 rounded-full border border-[#D90429]/30 bg-[#D90429]/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-[#D90429] backdrop-blur-xl">
+        📸 Vida de Club
+      </div>
+
+      <h2 className="mt-6 text-4xl font-black uppercase tracking-tight text-white md:text-6xl">
+        Más que un equipo,
+        <span className="block text-[#D90429]">
+          una comunidad
+        </span>
+      </h2>
+
+      <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-zinc-400 md:text-lg">
+        Entrenamientos, torneos, viajes y momentos que construyen
+        la identidad competitiva y formativa de Atlético EFIS.
+      </p>
+    </div>
+
+      {/* GALLERY GRID */}
+      <div className="grid auto-rows-[220px] grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-4">
+        {galleryImages.map((img, idx) => {
+          const large =
+            idx === 0 || idx === 3 || idx === 6;
+
+          return (
+            <div
+              key={idx}
+              className={`
+                group relative overflow-hidden rounded-[2rem]
+                border border-white/10 bg-zinc-900/40
+                transition-all duration-700
+                hover:-translate-y-2
+                hover:border-[#D90429]/40
+                hover:shadow-2xl
+                hover:shadow-[#D90429]/10
+                ${
+                  large
+                    ? "md:col-span-2 md:row-span-2"
+                    : ""
+                }
+              `}
+            >
+              {/* IMAGE */}
+              <Image
+                src={img.src}
+                alt={img.alt}
+                fill
+                className="object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+
+              {/* OVERLAY */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-80 transition-opacity duration-500 group-hover:opacity-100" />
+
+              {/* GLOW */}
+              <div className="absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
+                <div className="absolute bottom-0 left-1/2 h-40 w-40 -translate-x-1/2 rounded-full bg-[#D90429]/30 blur-3xl" />
               </div>
-            ))}
-          </div>
+
+              {/* CONTENT */}
+              <div className="absolute inset-x-0 bottom-0 z-10 p-6">
+                <div className="translate-y-6 transition-all duration-500 group-hover:translate-y-0">
+                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#D90429]">
+                    Atlético EFIS
+                  </p>
+
+                  <h3 className="mt-2 text-xl font-black text-white md:text-2xl">
+                    {img.alt}
+                  </h3>
+
+                  <div className="mt-4 h-[2px] w-0 bg-[#D90429] transition-all duration-500 group-hover:w-16" />
+                </div>
+              </div>
+
+              {/* TOP HIGHLIGHT */}
+              <div className="absolute left-0 top-0 h-[2px] w-0 bg-gradient-to-r from-[#D90429] to-red-400 transition-all duration-700 group-hover:w-full" />
+            </div>
+          );
+        })}
+      </div>
+
+      {/* BOTTOM CTA */}
+      <div className="mt-20 flex flex-col items-center justify-between gap-6 rounded-[2rem] border border-white/10 bg-white/[0.03] p-8 backdrop-blur-xl md:flex-row md:p-10">
+        <div>
+          <p className="text-sm font-bold uppercase tracking-[0.2em] text-[#D90429]">
+            Vive EFIS
+          </p>
+
+          <h3 className="mt-3 text-2xl font-black text-white md:text-3xl">
+            Síguenos en nuestras redes sociales
+          </h3>
+
+          <p className="mt-3 max-w-2xl text-zinc-400">
+            Compartimos resultados, entrenamientos, competencias,
+            actividades y el crecimiento de nuestras categorías.
+          </p>
         </div>
-      </section>
+
+        <a
+          href="https://www.instagram.com/atletico_efis/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group inline-flex items-center justify-center gap-3 rounded-full bg-[#D90429] px-8 py-4 text-sm font-bold uppercase tracking-wide text-white transition-all duration-300 hover:scale-105 hover:bg-[#ef233c]"
+        >
+          Ver Instagram
+
+          <span className="transition-transform duration-300 group-hover:translate-x-1">
+            →
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
 
       {/* SECCIÓN "INSCRÍBETE" (LLAMADA A LA ACCIÓN) */}
       <section className="relative overflow-hidden py-20">
@@ -263,6 +373,7 @@ export default async function HomePage() {
           </p>
         </div>
       </section>
+            <SponsorsSection />
     </div>
   );
 }
