@@ -84,7 +84,9 @@ export default function HeroSection() {
             </Link>
 
             <button className="rounded-full border border-white/10 bg-white/5 px-5 py-3 text-xs font-bold uppercase tracking-widest text-white backdrop-blur-xl transition-all duration-300 hover:border-red-500/40 hover:bg-white/10 sm:px-6 sm:py-3.5 sm:text-sm lg:px-7 lg:py-4">
-              Estadísticas
+              <Link href='/quienes-somos'>
+                Nosotros
+              </Link>
             </button>
           </motion.div>
         </motion.div>
