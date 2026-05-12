@@ -435,124 +435,93 @@ export default async function HomePage() {
         </div>
       </section>
 
-{/* FUNDADOR + ENTRENADORES + LIGA */}
+      {/* FUNDACIÓN + LIGA PANADERÍA LA ESTRELLA */}
 <section className="relative overflow-hidden border-t border-white/5 py-28">
-  {/* Background Effects */}
+  {/* BACKGROUND */}
   <div className="absolute inset-0">
-    <div className="absolute left-1/2 top-0 h-[400px] w-[400px] -translate-x-1/2 rounded-full bg-[#D90429]/10 blur-3xl" />
+    <div className="absolute left-1/2 top-0 h-[420px] w-[420px] -translate-x-1/2 rounded-full bg-[#D90429]/10 blur-3xl" />
 
-    <div className="absolute bottom-0 right-0 h-[260px] w-[260px] rounded-full bg-red-500/5 blur-3xl" />
+    <div className="absolute bottom-0 left-0 h-[280px] w-[280px] rounded-full bg-red-500/5 blur-3xl" />
+
+    <div className="absolute right-0 top-20 h-[220px] w-[220px] rounded-full bg-white/5 blur-3xl" />
   </div>
 
   <div className="relative mx-auto max-w-7xl px-6">
     {/* HEADER */}
     <div className="mx-auto max-w-3xl text-center">
       <p className="text-sm font-bold uppercase tracking-[0.3em] text-[#D90429]">
-        Liderazgo Deportivo
+        Identidad EFIS
       </p>
 
-      <h2 className="mt-5 text-4xl font-black uppercase leading-tight text-white md:text-5xl">
-        Formación con
+      <h2 className="mt-5 text-4xl font-black uppercase leading-tight text-white md:text-6xl">
+        Pasión que
         <span className="block text-[#D90429]">
-          identidad
+          construye comunidad
         </span>
       </h2>
 
       <p className="mt-6 text-lg leading-relaxed text-zinc-400">
-        Atlético EFIS impulsa el desarrollo
-        competitivo y formativo del voleibol
-        regional mediante entrenadores
-        comprometidos, valores sólidos y
-        proyectos que fortalecen la comunidad
-        deportiva.
+        Atlético EFIS nace desde el compromiso con el deporte formativo,
+        impulsando espacios competitivos y fortaleciendo el crecimiento
+        del voleibol en la provincia.
       </p>
     </div>
 
     {/* CONTENT */}
-    <div className="mt-20 grid gap-8 lg:grid-cols-[1fr_1fr_1.2fr]">
-      {/* FUNDADOR */}
-      <div className="group relative overflow-hidden rounded-[32px] border border-[#D90429]/20 bg-gradient-to-br from-[#D90429]/10 via-transparent to-transparent p-8 transition-all duration-500 hover:-translate-y-1 hover:border-[#D90429]/40 hover:shadow-2xl hover:shadow-[#D90429]/10">
-        {/* Glow */}
-        <div className="absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
-          <div className="absolute -top-20 right-0 h-40 w-40 rounded-full bg-[#D90429]/20 blur-3xl" />
+    <div className="mt-20 grid gap-8 lg:grid-cols-[1.15fr_0.85fr]">
+      {/* FUNDACIÓN */}
+<div className="group relative overflow-hidden rounded-[36px] border border-[#D90429]/20 bg-gradient-to-br from-[#D90429]/10 via-black/40 to-black/70">
+  {/* IMAGE */}
+  <div className="relative h-[560px] md:h-full overflow-hidden">
+    <Image
+      src="/galeria/fundador.jpeg"
+      alt="Felipe Vega - Atlético EFIS"
+      fill
+      className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
+    />
+
+    {/* MAIN OVERLAY */}
+    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/45 to-transparent" />
+
+    {/* EXTRA DARK BOTTOM FOR READABILITY */}
+    <div className="absolute inset-x-0 bottom-0 h-[55%] bg-gradient-to-t from-black via-black/90 to-transparent" />
+
+    {/* SIDE SHADOW */}
+    <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-transparent" />
+
+    {/* SOFT RED GLOW */}
+    <div className="absolute bottom-0 left-1/2 h-60 w-60 -translate-x-1/2 rounded-full bg-[#D90429]/15 blur-3xl" />
+
+    {/* CONTENT */}
+    <div className="absolute inset-x-0 bottom-0 z-10 p-8 md:p-10">
+      <div className="translate-y-4 transition-transform duration-500 group-hover:translate-y-0">
+        <div className="inline-flex mb-26 items-center gap-2 rounded-full border border-[#D90429]/30 bg-[#D90429]/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.25em] text-[#D90429] backdrop-blur-xl">
+          🔴 Fundación del Club
         </div>
 
-        <div className="relative">
-          <div className="flex h-16 w-16 items-center justify-center rounded-2xl border border-[#D90429]/20 bg-[#D90429]/10">
-            <Shield className="h-8 w-8 text-[#D90429]" />
-          </div>
+        <h3 className="mt-40 text-4xl font-black uppercase leading-none text-white drop-shadow-2xl md:text-5xl">
+          Felipe Vega
+        </h3>
 
-          <p className="mt-8 text-xs font-bold uppercase tracking-[0.3em] text-[#D90429]">
-            Fundador
-          </p>
+        <div className="mt-2 h-px w-24 bg-gradient-to-r from-[#D90429] to-transparent" />
 
-          <h3 className="mt-4 text-3xl font-black uppercase text-white">
-            Felipe Vega
-          </h3>
+        <p className="mt-6 max-w-2xl text-base leading-relaxed text-zinc-200 md:text-lg">
+          Fundador e impulsor de Atlético EFIS. Desde sus inicios,
+          ha liderado un proyecto enfocado en la formación deportiva,
+          el desarrollo humano y el crecimiento competitivo del
+          voleibol en Punitaqui y Ovalle.
+        </p>
 
-          <div className="mt-5 h-px w-16 bg-gradient-to-r from-[#D90429] to-transparent" />
-
-          <p className="mt-5 leading-relaxed text-zinc-400">
-            Impulsor del proyecto Atlético EFIS
-            y pieza clave en la construcción del
-            club desde sus orígenes, promoviendo
-            el crecimiento deportivo y humano del
-            voleibol regional.
-          </p>
-        </div>
       </div>
-
-      {/* ENTRENADORES */}
-      <div className="group relative overflow-hidden rounded-[32px] border border-white/10 bg-white/[0.03] p-8 backdrop-blur-xl transition-all duration-500 hover:-translate-y-1 hover:border-white/20 hover:bg-white/[0.05]">
-        {/* Glow */}
-        <div className="absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
-          <div className="absolute bottom-0 left-0 h-40 w-40 rounded-full bg-white/10 blur-3xl" />
-        </div>
-
-        <div className="relative">
-          <div className="flex h-16 w-16 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.04]">
-            <GraduationCap className="h-8 w-8 text-[#D90429]" />
-          </div>
-
-          <p className="mt-8 text-xs font-bold uppercase tracking-[0.3em] text-zinc-500">
-            Staff Técnico
-          </p>
-
-          <h3 className="mt-4 text-3xl font-black uppercase text-white">
-            Entrenadores
-          </h3>
-
-          <div className="mt-5 h-px w-16 bg-gradient-to-r from-white/40 to-transparent" />
-
-          <p className="mt-5 leading-relaxed text-zinc-400">
-            Profesores certificados por la
-            Federación Chilena de Voleibol,
-            enfocados en potenciar el desarrollo
-            técnico, táctico, físico y humano de
-            cada deportista.
-          </p>
-
-          <div className="mt-8 flex flex-wrap gap-3">
-            <div className="rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-xs font-semibold uppercase tracking-wide text-zinc-300">
-              Formación
-            </div>
-
-            <div className="rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-xs font-semibold uppercase tracking-wide text-zinc-300">
-              Competencia
-            </div>
-
-            <div className="rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-xs font-semibold uppercase tracking-wide text-zinc-300">
-              Disciplina
-            </div>
-          </div>
-        </div>
-      </div>
+    </div>
+  </div>
+</div>
 
       {/* LIGA */}
-      <div className="group relative overflow-hidden rounded-[32px] border border-white/10 bg-gradient-to-br from-white/[0.04] to-transparent p-8 transition-all duration-500 hover:-translate-y-1 hover:border-[#D90429]/30 hover:shadow-2xl hover:shadow-[#D90429]/10">
-        {/* Background Glow */}
+      <div className="group relative overflow-hidden rounded-[36px] border border-white/10 bg-gradient-to-br from-white/[0.04] via-black/40 to-black/80 p-4 transition-all duration-500 hover:border-[#D90429]/30 hover:shadow-2xl hover:shadow-[#D90429]/10 md:my-auto md:p-10">
+        {/* GLOW */}
         <div className="absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
-          <div className="absolute right-0 top-0 h-52 w-52 rounded-full bg-[#D90429]/15 blur-3xl" />
+          <div className="absolute right-0 top-0 h-72 w-72 rounded-full bg-[#D90429]/10 blur-3xl" />
         </div>
 
         <div className="relative flex h-full flex-col">
@@ -567,7 +536,7 @@ export default async function HomePage() {
                 Liga Provincial
               </p>
 
-              <h3 className="mt-2 text-2xl font-black uppercase text-white">
+              <h3 className="mt-2 text-3xl font-black uppercase leading-none text-white">
                 Panadería
                 <span className="block">
                   La Estrella
@@ -576,28 +545,292 @@ export default async function HomePage() {
             </div>
           </div>
 
-          <p className="mt-6 leading-relaxed text-zinc-400">
-            Atlético EFIS participa activamente
-            en la promoción y fortalecimiento de
-            la Liga Provincial Panadería La
-            Estrella, impulsando espacios de
-            competencia y desarrollo para el
-            voleibol regional.
+          <p className="mt-2 leading-relaxed text-zinc-400">
+            Atlético EFIS participa activamente en la promoción y
+            fortalecimiento de la Liga Provincial Panadería La Estrella,
+            impulsando espacios competitivos y oportunidades de desarrollo
+            para deportistas de distintas categorías.
           </p>
 
-          {/* LOGO */}
-          <div className="mt-8 flex flex-1 items-center justify-center rounded-[28px] border border-white/10 bg-black/30 p-6 backdrop-blur-xl">
-            <div className="relative aspect-square w-full max-w-[240px]">
+          {/* LOGO CONTAINER */}
+          <div className="mt-4 flex flex-1 items-center justify-center rounded-[32px] border border-white/10 bg-black/40 p-8 backdrop-blur-xl">
+            <div className="relative aspect-square w-full max-w-[260px]">
               <Image
                 src="/sponsors/sponsor1.jpg"
                 alt="Liga Panadería La Estrella"
                 fill
-                className="object-contain drop-shadow-2xl transition-transform duration-500 group-hover:scale-105"
+                className="object-contain drop-shadow-[0_0_35px_rgba(217,4,41,0.15)] transition-transform duration-500 group-hover:scale-105"
               />
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+      {/* PROFESORES */}
+<section className="relative overflow-hidden border-t border-white/5 py-28">
+  {/* Background Effects */}
+  <div className="absolute inset-0">
+    <div className="absolute left-1/2 top-0 h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-[#D90429]/10 blur-3xl" />
+
+    <div className="absolute bottom-0 left-0 h-[300px] w-[300px] rounded-full bg-red-500/5 blur-3xl" />
+  </div>
+
+  <div className="relative mx-auto max-w-7xl px-6">
+    {/* HEADER */}
+    <div className="mx-auto max-w-3xl text-center">
+      <p className="text-sm font-bold uppercase tracking-[0.3em] text-[#D90429]">
+        Cuerpo Técnico
+      </p>
+
+      <h2 className="mt-5 text-4xl font-black uppercase tracking-tight text-white md:text-6xl">
+        Profesionales que
+        <span className="block text-[#D90429]">
+          forman personas
+        </span>
+      </h2>
+
+      <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-zinc-400">
+        Atlético EFIS desarrolla el voleibol
+        regional mediante entrenadores con
+        experiencia competitiva, formación
+        profesional y una visión centrada en el
+        crecimiento deportivo y humano.
+      </p>
+    </div>
+
+    {/* PROFES CARDS */}
+    <div className="mt-20 space-y-12">
+      {/* FELIPE */}
+      <div className="group relative overflow-hidden rounded-[40px] border border-[#D90429]/20 bg-gradient-to-br from-[#D90429]/10 via-black/40 to-transparent transition-all duration-700 hover:border-[#D90429]/40 hover:shadow-2xl hover:shadow-[#D90429]/10">
+        <div className="grid lg:grid-cols-[380px_1fr]">
+          {/* IMAGE */}
+          <div className="relative min-h-[520px] overflow-hidden">
+            <Image
+              src="/profes/felipe.jpeg"
+              alt="Felipe Vega"
+              fill
+              className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
+            />
+
+            {/* Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent lg:bg-gradient-to-r lg:from-transparent lg:via-transparent lg:to-black/40" />
+
+            {/* Badge */}
+            <div className="absolute left-6 top-6 rounded-full border border-[#D90429]/30 bg-black/50 px-4 py-2 text-xs font-bold uppercase tracking-[0.25em] text-[#D90429] backdrop-blur-xl">
+              Fundador
+            </div>
+          </div>
+
+          {/* CONTENT */}
+          <div className="relative flex flex-col justify-center p-8 md:p-12">
+            {/* Glow */}
+            <div className="absolute right-0 top-0 h-52 w-52 rounded-full bg-[#D90429]/10 blur-3xl" />
+
+            <div className="relative">
+              <p className="text-sm font-bold uppercase tracking-[0.3em] text-[#D90429]">
+                Profesor & Entrenador
+              </p>
+
+              <h3 className="mt-4 text-4xl font-black uppercase text-white md:text-5xl">
+                Felipe Vega
+                <span className="block text-zinc-500">
+                  Urquieta
+                </span>
+              </h3>
+
+              <div className="mt-6 flex flex-wrap gap-3">
+                <div className="rounded-full border border-[#D90429]/20 bg-[#D90429]/10 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-[#D90429]">
+                  Educación Física
+                </div>
+
+                <div className="rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-xs font-semibold uppercase tracking-wide text-zinc-300">
+                  Entrenador Nivel 1
+                </div>
+
+                <div className="rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-xs font-semibold uppercase tracking-wide text-zinc-300">
+                  Minivoleibol
+                </div>
+              </div>
+
+              <p className="mt-8 max-w-3xl text-lg leading-relaxed text-zinc-400">
+                Profesor de Educación Física
+                titulado en 2014 y fundador de
+                Atlético EFIS. Ha dedicado gran
+                parte de su trayectoria al
+                desarrollo del deporte escolar y
+                formativo, obteniendo títulos
+                comunales, provinciales y
+                regionales junto a sus equipos.
+              </p>
+
+              {/* STATS */}
+              <div className="mt-10 grid gap-4 sm:grid-cols-3">
+                <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-5">
+                  <p className="text-3xl font-black text-[#D90429]">
+                    2014
+                  </p>
+
+                  <p className="mt-2 text-sm text-zinc-400">
+                    Inicio trayectoria profesional
+                  </p>
+                </div>
+
+                <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-5">
+                  <p className="text-3xl font-black text-[#D90429]">
+                    2025
+                  </p>
+
+                  <p className="mt-2 text-sm text-zinc-400">
+                    Campeón Provincial Sub14
+                  </p>
+                </div>
+
+                <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-5">
+                  <p className="text-3xl font-black text-[#D90429]">
+                    50+
+                  </p>
+
+                  <p className="mt-2 text-sm text-zinc-400">
+                    Deportistas activos en EFIS
+                  </p>
+                </div>
+              </div>
+
+              <blockquote className="mt-10 border-l-2 border-[#D90429] pl-5 text-lg italic leading-relaxed text-zinc-300">
+                “El deporte es una escuela de
+                vida donde la disciplina, el
+                respeto y el trabajo en equipo
+                forman grandes personas.”
+              </blockquote>
             </div>
           </div>
         </div>
       </div>
+
+      {/* OSCAR */}
+      <div className="group relative overflow-hidden rounded-[40px] border border-white/10 bg-white/[0.03] transition-all duration-700 hover:border-white/20 hover:shadow-2xl hover:shadow-black/30">
+        <div className="grid lg:grid-cols-[380px_1fr]">
+          {/* IMAGE */}
+          <div className="relative min-h-[520px] overflow-hidden">
+            <Image
+              src="/profes/oscar.jpeg"
+              alt="Oscar Beron"
+              fill
+              className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
+            />
+
+            {/* Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent lg:bg-gradient-to-r lg:from-transparent lg:via-transparent lg:to-black/40" />
+
+            {/* Badge */}
+            <div className="absolute left-6 top-6 rounded-full border border-white/10 bg-black/50 px-4 py-2 text-xs font-bold uppercase tracking-[0.25em] text-white backdrop-blur-xl">
+              Rama Masculina
+            </div>
+          </div>
+
+          {/* CONTENT */}
+          <div className="relative flex flex-col justify-center p-8 md:p-12">
+            <div className="absolute bottom-0 right-0 h-52 w-52 rounded-full bg-white/5 blur-3xl" />
+
+            <div className="relative">
+              <p className="text-sm font-bold uppercase tracking-[0.3em] text-[#D90429]">
+                Entrenador
+              </p>
+
+              <h3 className="mt-4 text-4xl font-black uppercase text-white md:text-5xl">
+                Oscar José
+                <span className="block text-zinc-500">
+                  Beron Scapinardi
+                </span>
+              </h3>
+
+              <div className="mt-6 flex flex-wrap gap-3">
+                <div className="rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-xs font-semibold uppercase tracking-wide text-zinc-300">
+                  Buenos Aires
+                </div>
+
+                <div className="rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-xs font-semibold uppercase tracking-wide text-zinc-300">
+                  Liga Metropolitana
+                </div>
+
+                <div className="rounded-full border border-[#D90429]/20 bg-[#D90429]/10 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-[#D90429]">
+                  Sub17 & TC
+                </div>
+              </div>
+
+              <p className="mt-8 max-w-3xl text-lg leading-relaxed text-zinc-400">
+                Inició su trayectoria deportiva
+                en Argentina y compitió en la Liga
+                Metropolitana de Buenos Aires.
+                Desde su llegada a Chile ha sido
+                parte activa del desarrollo del
+                voleibol en Ovalle y actualmente
+                lidera la rama masculina de
+                Atlético EFIS.
+              </p>
+
+              {/* STATS */}
+              <div className="mt-10 grid gap-4 sm:grid-cols-3">
+                <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-5">
+                  <p className="text-3xl font-black text-[#D90429]">
+                    2007
+                  </p>
+
+                  <p className="mt-2 text-sm text-zinc-400">
+                    Inicio en el voleibol
+                  </p>
+                </div>
+
+                <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-5">
+                  <p className="text-3xl font-black text-[#D90429]">
+                    2010
+                  </p>
+
+                  <p className="mt-2 text-sm text-zinc-400">
+                    Competencia en Buenos Aires
+                  </p>
+                </div>
+
+                <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-5">
+                  <p className="text-3xl font-black text-[#D90429]">
+                    2026
+                  </p>
+
+                  <p className="mt-2 text-sm text-zinc-400">
+                    Lidera rama masculina EFIS
+                  </p>
+                </div>
+              </div>
+
+              <blockquote className="mt-10 border-l-2 border-[#D90429] pl-5 text-lg italic leading-relaxed text-zinc-300">
+                “La disciplina y la práctica
+                constante pueden llevar a
+                cualquier jugador a un alto nivel
+                competitivo.”
+              </blockquote>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {/* CTA */}
+    <div className="mt-16 text-center">
+      <Link
+        href="/profesores"
+        className="group inline-flex items-center gap-3 rounded-full border border-[#D90429]/30 bg-[#D90429]/10 px-8 py-4 text-sm font-bold uppercase tracking-wide text-white transition-all duration-300 hover:scale-105 hover:border-[#D90429] hover:bg-[#D90429]"
+      >
+        Conocer cuerpo técnico completo
+
+        <span className="transition-transform duration-300 group-hover:translate-x-1">
+          →
+        </span>
+      </Link>
     </div>
   </div>
 </section>
