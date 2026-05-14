@@ -194,7 +194,7 @@ async function getData() {
 
     const tournamentConfigs = [
       {
-        name: "Todo Competidor Varones",
+        name: "TC Varones",
         url: "https://4volei.vercel.app/api/public/tournaments?id=17d76966-b9ae-40ba-8dc8-935399c73f5e",
         type: "men",
       },
@@ -206,20 +206,19 @@ async function getData() {
       },
 
       {
-        name: "Todo Competidor Damas",
+        name: "TC Damas",
         url: "https://4volei.vercel.app/api/public/tournaments?id=d50f19ff-f2b3-4145-84e2-045c7851e2a4",
         type: "women",
       },
-
-      {
-        name: "Sub 14 Damas",
-        url: "https://4volei.vercel.app/api/public/tournaments?id=79dedf84-7acc-4a81-b68a-4ff2c03c4c55",
-        type: "women",
-      },
-
       {
         name: "Sub 16 Damas",
         url: "https://4volei.vercel.app/api/public/tournaments?id=ccbcca56-98bd-44ce-9135-f0d530b169e4",
+        type: "women",
+      },
+      
+      {
+        name: "Sub 14 Damas",
+        url: "https://4volei.vercel.app/api/public/tournaments?id=79dedf84-7acc-4a81-b68a-4ff2c03c4c55",
         type: "women",
       },
 

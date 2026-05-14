@@ -105,16 +105,18 @@ function TournamentCard({
 
       {/* TABLE */}
       <div className="overflow-x-auto">
-        <div className="min-w-[760px]">
+        <div className="min-w-[340px] md:min-w-[760px]">
+
           {/* HEAD */}
-          <div className="grid grid-cols-[70px_1.8fr_90px_90px_90px_90px_90px] border-b border-white/5 bg-white/[0.03] px-6 py-4 text-[11px] font-bold uppercase tracking-[0.25em] text-zinc-500">
+          <div className="grid grid-cols-[42px_minmax(0,1fr)_50px_42px_60px] border-b border-white/5 bg-white/[0.03] px-3 py-3 text-[10px] font-bold uppercase tracking-[0.18em] text-zinc-500 md:grid-cols-[70px_1.8fr_90px_90px_90px_90px_90px] md:px-6 md:py-4 md:text-[11px] md:tracking-[0.25em]">
             <div>Pos</div>
-            <div>Equipo</div>
+            <div className="pl-4">Equipo</div>
             <div>PTS</div>
             <div>PJ</div>
-            <div>PG</div>
-            <div>PP</div>
             <div>SETS</div>
+
+            <div className="hidden md:block">PG</div>
+            <div className="hidden md:block">PP</div>
           </div>
 
           {/* ROWS */}
@@ -135,7 +137,7 @@ function TournamentCard({
                 transition={{
                   delay: index * 0.03,
                 }}
-                className={`grid grid-cols-[70px_1.8fr_90px_90px_90px_90px_90px] items-center border-b border-white/5 px-6 py-5 transition-all duration-300 hover:bg-white/[0.03] ${
+                className={`grid grid-cols-[42px_minmax(0,1fr)_50px_42px_60px] items-center border-b border-white/5 px-3 py-3 transition-all duration-300 hover:bg-white/[0.03] md:grid-cols-[70px_1.8fr_90px_90px_90px_90px_90px] md:px-6 md:py-5 ${
                   isEfis
                     ? "bg-gradient-to-r from-[#D90429]/15 to-transparent"
                     : ""
@@ -144,7 +146,7 @@ function TournamentCard({
                 {/* POS */}
                 <div>
                   <div
-                    className={`inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-black ${positionStyles.badge}`}
+                    className={`inline-flex items-center gap-1 rounded-full border px-2 py-1 text-[10px] font-black md:gap-2 md:px-3 md:text-xs ${positionStyles.badge}`}
                   >
                     #{index + 1}
 
@@ -153,11 +155,10 @@ function TournamentCard({
                 </div>
 
                 {/* TEAM */}
-                <div className="flex items-center gap-3">
-
-                  <div>
+                <div className="flex pl-4 min-w-0 items-center gap-2 md:gap-3">
+                  <div className="min-w-0">
                     <p
-                      className={`font-bold ${
+                      className={`truncate  text-sm font-bold md:text-base ${
                         isEfis
                           ? "text-white"
                           : "text-zinc-200"
@@ -170,29 +171,29 @@ function TournamentCard({
 
                 {/* PTS */}
                 <div>
-                  <span className="text-2xl font-black text-[#FF4D6D]">
+                  <span className="text-base font-black text-[#FF4D6D] md:text-2xl">
                     {team.points}
                   </span>
                 </div>
 
                 {/* PJ */}
-                <div className="text-sm font-bold text-white">
+                <div className="text-xs font-bold text-white md:text-sm">
                   {team.played}
                 </div>
 
+                {/* SETS */}
+                <div className="text-[11px] font-bold text-zinc-300 md:text-sm">
+                  {team.setsWon}/{team.setsLost}
+                </div>
+
                 {/* PG */}
-                <div className="text-sm font-bold text-emerald-400">
+                <div className="hidden text-sm font-bold text-emerald-400 md:block">
                   {team.won}
                 </div>
 
                 {/* PP */}
-                <div className="text-sm font-bold text-red-400">
+                <div className="hidden text-sm font-bold text-red-400 md:block">
                   {team.lost}
-                </div>
-
-                {/* SETS */}
-                <div className="text-sm font-bold text-zinc-300">
-                  {team.setsWon}/{team.setsLost}
                 </div>
               </motion.div>
             );
@@ -215,7 +216,7 @@ export default function TournamentsSection({
       <div className="relative z-10 mx-auto max-w-7xl px-6">
         {/* HEADER */}
         <div className="mb-20 max-w-4xl">
-          <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-[#D90429]/20 bg-[#D90429]/10 px-4 py-2 text-[11px] font-bold uppercase tracking-[0.25em] text-[#FF4D6D]">
+          <div className="mb-5 inline-flex items-center gap-2 md:rounded-full border border-[#D90429]/20 bg-[#D90429]/10 px-4 py-2 text-[11px] font-bold uppercase tracking-[0.25em] text-[#FF4D6D]">
             <Trophy size={14} />
             Participación Competitiva
           </div>
