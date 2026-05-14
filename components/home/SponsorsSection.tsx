@@ -13,21 +13,8 @@ const sponsors = [
     logo: "/sponsors/sponsor1.jpg",
     url: "https://www.instagram.com/pan_laestrella_ovalle/",
   },
-
   {
     id: 2,
-    name: "c_atito",
-    logo: "/sponsors/sponsor2.jpg",
-    url: "https://www.instagram.com/c_atito/",
-  },
-  {
-    id: 3,
-    name: "Hielos Taltal",
-    logo: "/sponsors/sponsor3.png",
-    url: "#",
-  },
-  {
-    id: 4,
     name: "4Volei",
     logo: "/sponsors/sponsor4.png",
     url: "https://4volei.vercel.app/",
