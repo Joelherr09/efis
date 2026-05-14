@@ -295,7 +295,7 @@ export default function Navbar() {
                     Instagram
                   </span>
 
-                  <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-white/10">
+                  <div className="flex text-white h-8 w-8 items-center justify-center rounded-xl bg-white/10">
                     <InstagramIcon />
                   </div>
                 </Link>
