@@ -1049,7 +1049,7 @@ export default async function HomePage() {
               target="_blank"
               className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 px-7 py-3 font-bold text-white transition-all hover:scale-105"
             >
-              <InstagramIcon className="h-5 w-5" />
+              <InstagramIcon />
               Instagram
             </a>
 
