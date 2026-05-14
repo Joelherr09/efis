@@ -80,7 +80,7 @@ export default function Footer() {
                 <Code size={12} className="text-zinc-500" />
                 <span>Desarrollo y tecnología por</span>
                 <Link
-                  href="https://joelherr.netlify.app"
+                  href="https://www.joelherr.site/"
                   target="_blank"
                   className="font-medium text-zinc-300 transition hover:text-white"
                 >
