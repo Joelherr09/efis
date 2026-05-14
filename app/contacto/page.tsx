@@ -249,7 +249,7 @@ export default function ContactoPage() {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 px-7 py-3 text-sm font-bold uppercase tracking-wide text-white shadow-xl"
             >
-              <InstagramIcon className="h-4 w-4" />
+              <InstagramIcon />
               Instagram
             </motion.a>
           </motion.div>
@@ -455,7 +455,7 @@ export default function ContactoPage() {
                     className="flex items-center justify-between rounded-2xl border border-white/10 bg-white/[0.04] px-5 py-4 transition-all hover:border-pink-500/30 hover:bg-pink-500/10"
                   >
                     <div className="flex items-center gap-3">
-                      <InstagramIcon className="h-5 w-5" />
+                      <InstagramIcon />
 
                       <span className="font-semibold">
                         Ver Instagram
