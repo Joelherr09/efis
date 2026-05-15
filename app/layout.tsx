@@ -32,43 +32,85 @@ export const metadata: Metadata = {
   authors: [
     {
       name: "Atlético EFIS",
+      url: siteUrl,
     },
   ],
 
   creator: "Atlético EFIS",
   publisher: "Atlético EFIS",
 
+  alternates: {
+    canonical: siteUrl,
+  },
+
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+
   openGraph: {
-    title: "Atlético EFIS | Club de Voleibol",
-    description:
-      "Formación, competencia y pasión por el voleibol regional en Punitaqui y Ovalle.",
+    type: "website",
+    locale: "es_CL",
     url: siteUrl,
     siteName: "Atlético EFIS",
-    locale: "es_CL",
-    type: "website",
+
+    title: "Atlético EFIS | Club de Voleibol",
+
+    description:
+      "Formación, competencia y pasión por el voleibol regional en Punitaqui y Ovalle.",
 
     images: [
       {
-        url: "/galeria/img-efis-todos.jpg",
+        url: "/layout/logo.jpg",
         width: 1200,
-        height: 630,
-        alt: "Equipo Atlético EFIS",
+        height: 1200,
+        alt: "Logo Atlético EFIS",
       },
     ],
   },
 
   twitter: {
     card: "summary_large_image",
+
     title: "Atlético EFIS | Club de Voleibol",
+
     description:
       "Club deportivo de voleibol enfocado en formación y competencia regional.",
-    images: ["/galeria/img-efis-todos.jpg"],
+
+    images: ["/layout/logo.jpg"],
   },
 
   icons: {
-    icon: "/favicon.ico",
-    apple: "/favicon.ico",
+    icon: [
+      {
+        url: "/favicon.ico",
+        sizes: "any",
+      },
+      {
+        url: "/layout/logo.jpg",
+        type: "image/jpeg",
+        sizes: "512x512",
+      },
+    ],
+
+    apple: [
+      {
+        url: "/layout/logo.jpg",
+        sizes: "180x180",
+      },
+    ],
+
+    shortcut: ["/favicon.ico"],
   },
+
+  manifest: "/site.webmanifest",
 };
 
 export default function RootLayout({
