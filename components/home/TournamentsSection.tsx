@@ -4,9 +4,7 @@ import { motion } from "framer-motion";
 import {
   Trophy,
   Medal,
-  ChevronRight,
   Shield,
-  Flame,
 } from "lucide-react";
 
 import {
@@ -26,9 +24,14 @@ type TeamStanding = {
   points: number;
 };
 
+type GroupStandings = {
+  groupName: string;
+  standings: TeamStanding[];
+};
+
 type Tournament = {
   name: string;
-  standings: TeamStanding[];
+  groups: GroupStandings[]; // Cambiado de standings a groups
 };
 
 type Props = {
@@ -68,11 +71,131 @@ function getPositionStyles(position: number) {
   };
 }
 
+function GroupStandingsTable({ group }: { group: GroupStandings }) {
+  return (
+    <div className="overflow-x-auto">
+      <div className="min-w-[340px] md:min-w-[760px]">
+        {/* HEADER DEL GRUPO */}
+        <div className="mb-4 flex items-center gap-2">
+          <div className={`h-2 w-2 rounded-full ${
+            group.groupName === 'A' ? 'bg-red-500' :
+            group.groupName === 'B' ? 'bg-blue-500' :
+            group.groupName === 'C' ? 'bg-green-500' :
+            group.groupName === 'D' ? 'bg-yellow-500' :
+            'bg-purple-500'
+          }`} />
+          <h4 className="text-lg font-bold uppercase text-white">
+            Grupo {group.groupName}
+          </h4>
+          <span className="text-xs text-zinc-500">
+            ({group.standings.length} equipos)
+          </span>
+        </div>
+
+        {/* HEAD */}
+        <div className="grid grid-cols-[42px_minmax(0,1fr)_50px_42px_60px] border-b border-white/5 bg-white/[0.03] px-3 py-3 text-[10px] font-bold uppercase tracking-[0.18em] text-zinc-500 md:grid-cols-[70px_1.8fr_90px_90px_90px_90px_90px] md:px-6 md:py-4 md:text-[11px] md:tracking-[0.25em]">
+          <div>Pos</div>
+          <div className="pl-4">Equipo</div>
+          <div>PTS</div>
+          <div>PJ</div>
+          <div>SETS</div>
+          <div className="hidden md:block">PG</div>
+          <div className="hidden md:block">PP</div>
+        </div>
+
+        {/* ROWS */}
+        {group.standings.map((team, index) => {
+          const isEfis = team.teamName
+            .toLowerCase()
+            .includes("efis");
+
+          const positionStyles =
+            getPositionStyles(index + 1);
+
+          return (
+            <motion.div
+              key={team.teamName}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{
+                delay: index * 0.03,
+              }}
+              className={`grid grid-cols-[42px_minmax(0,1fr)_50px_42px_60px] items-center border-b border-white/5 px-3 py-3 transition-all duration-300 hover:bg-white/[0.03] md:grid-cols-[70px_1.8fr_90px_90px_90px_90px_90px] md:px-6 md:py-5 ${
+                isEfis
+                  ? "bg-gradient-to-r from-[#D90429]/15 to-transparent"
+                  : ""
+              }`}
+            >
+              {/* POS */}
+              <div>
+                <div
+                  className={`inline-flex items-center gap-1 rounded-full border px-2 py-1 text-[10px] font-black md:gap-2 md:px-3 md:text-xs ${positionStyles.badge}`}
+                >
+                  #{index + 1}
+                  {positionStyles.icon}
+                </div>
+              </div>
+
+              {/* TEAM */}
+              <div className="flex pl-4 min-w-0 items-center gap-2 md:gap-3">
+                <div className="min-w-0">
+                  <p
+                    className={`truncate text-sm font-bold md:text-base ${
+                      isEfis
+                        ? "text-white"
+                        : "text-zinc-200"
+                    }`}
+                  >
+                    {team.teamName}
+                  </p>
+                </div>
+              </div>
+
+              {/* PTS */}
+              <div>
+                <span className="text-base font-black text-[#FF4D6D] md:text-2xl">
+                  {team.points}
+                </span>
+              </div>
+
+              {/* PJ */}
+              <div className="text-xs font-bold text-white md:text-sm">
+                {team.played}
+              </div>
+
+              {/* SETS */}
+              <div className="text-[11px] font-bold text-zinc-300 md:text-sm">
+                {team.setsWon}/{team.setsLost}
+              </div>
+
+              {/* PG */}
+              <div className="hidden text-sm font-bold text-emerald-400 md:block">
+                {team.won}
+              </div>
+
+              {/* PP */}
+              <div className="hidden text-sm font-bold text-red-400 md:block">
+                {team.lost}
+              </div>
+            </motion.div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
 function TournamentCard({
   tournament,
 }: {
   tournament: Tournament;
 }) {
+  // Ordenar grupos alfabéticamente (A, B, C, D, etc.)
+  const gruposOrdenados = [...tournament.groups].sort((a, b) => 
+    a.groupName.localeCompare(b.groupName)
+  );
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 25 }}
@@ -103,102 +226,18 @@ function TournamentCard({
         </div>
       </div>
 
-      {/* TABLE */}
-      <div className="overflow-x-auto">
-        <div className="min-w-[340px] md:min-w-[760px]">
-
-          {/* HEAD */}
-          <div className="grid grid-cols-[42px_minmax(0,1fr)_50px_42px_60px] border-b border-white/5 bg-white/[0.03] px-3 py-3 text-[10px] font-bold uppercase tracking-[0.18em] text-zinc-500 md:grid-cols-[70px_1.8fr_90px_90px_90px_90px_90px] md:px-6 md:py-4 md:text-[11px] md:tracking-[0.25em]">
-            <div>Pos</div>
-            <div className="pl-4">Equipo</div>
-            <div>PTS</div>
-            <div>PJ</div>
-            <div>SETS</div>
-
-            <div className="hidden md:block">PG</div>
-            <div className="hidden md:block">PP</div>
+      {/* GRUPOS */}
+      <div className="divide-y divide-white/5">
+        {gruposOrdenados.map((grupo, idx) => (
+          <div key={grupo.groupName} className="p-6 md:p-8">
+            <GroupStandingsTable group={grupo} />
+            
+            {/* Separador entre grupos (excepto el último) */}
+            {idx < gruposOrdenados.length - 1 && (
+              <div className="mt-6 pt-6 border-t border-white/5" />
+            )}
           </div>
-
-          {/* ROWS */}
-          {tournament.standings.map((team, index) => {
-            const isEfis = team.teamName
-              .toLowerCase()
-              .includes("efis");
-
-            const positionStyles =
-              getPositionStyles(index + 1);
-
-            return (
-              <motion.div
-                key={team.teamName}
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{
-                  delay: index * 0.03,
-                }}
-                className={`grid grid-cols-[42px_minmax(0,1fr)_50px_42px_60px] items-center border-b border-white/5 px-3 py-3 transition-all duration-300 hover:bg-white/[0.03] md:grid-cols-[70px_1.8fr_90px_90px_90px_90px_90px] md:px-6 md:py-5 ${
-                  isEfis
-                    ? "bg-gradient-to-r from-[#D90429]/15 to-transparent"
-                    : ""
-                }`}
-              >
-                {/* POS */}
-                <div>
-                  <div
-                    className={`inline-flex items-center gap-1 rounded-full border px-2 py-1 text-[10px] font-black md:gap-2 md:px-3 md:text-xs ${positionStyles.badge}`}
-                  >
-                    #{index + 1}
-
-                    {positionStyles.icon}
-                  </div>
-                </div>
-
-                {/* TEAM */}
-                <div className="flex pl-4 min-w-0 items-center gap-2 md:gap-3">
-                  <div className="min-w-0">
-                    <p
-                      className={`truncate  text-sm font-bold md:text-base ${
-                        isEfis
-                          ? "text-white"
-                          : "text-zinc-200"
-                      }`}
-                    >
-                      {team.teamName}
-                    </p>
-                  </div>
-                </div>
-
-                {/* PTS */}
-                <div>
-                  <span className="text-base font-black text-[#FF4D6D] md:text-2xl">
-                    {team.points}
-                  </span>
-                </div>
-
-                {/* PJ */}
-                <div className="text-xs font-bold text-white md:text-sm">
-                  {team.played}
-                </div>
-
-                {/* SETS */}
-                <div className="text-[11px] font-bold text-zinc-300 md:text-sm">
-                  {team.setsWon}/{team.setsLost}
-                </div>
-
-                {/* PG */}
-                <div className="hidden text-sm font-bold text-emerald-400 md:block">
-                  {team.won}
-                </div>
-
-                {/* PP */}
-                <div className="hidden text-sm font-bold text-red-400 md:block">
-                  {team.lost}
-                </div>
-              </motion.div>
-            );
-          })}
-        </div>
+        ))}
       </div>
     </motion.div>
   );
@@ -237,28 +276,27 @@ export default function TournamentsSection({
         <div className="mb-28">
           <div className="mb-8 flex items-center gap-3">
             <div className="h-3 w-3 rounded-full bg-[#D90429]" />
-
             <h3 className="text-3xl font-black uppercase text-white">
               Varones
             </h3>
           </div>
 
-        <Tabs defaultValue={menTournaments[0]?.name}>
+          <Tabs defaultValue={menTournaments[0]?.name}>
             {/* SCROLLABLE TABS */}
             <div className="relative mb-10">
-            {/* Fade Left */}
-            <div className="pointer-events-none absolute left-0 top-0 z-10 h-full w-10 bg-gradient-to-r from-black to-transparent" />
+              {/* Fade Left */}
+              <div className="pointer-events-none absolute left-0 top-0 z-10 h-full w-10 bg-gradient-to-r from-black to-transparent" />
 
-            {/* Fade Right */}
-            <div className="pointer-events-none absolute right-0 top-0 z-10 h-full w-10 bg-gradient-to-l from-black to-transparent" />
+              {/* Fade Right */}
+              <div className="pointer-events-none absolute right-0 top-0 z-10 h-full w-10 bg-gradient-to-l from-black to-transparent" />
 
-            <div className="overflow-x-auto scrollbar-none">
+              <div className="overflow-x-auto scrollbar-none">
                 <TabsList className="flex h-auto w-max min-w-full gap-3 bg-transparent p-0">
-                {menTournaments.map((tournament) => (
+                  {menTournaments.map((tournament) => (
                     <TabsTrigger
-                    key={tournament.name}
-                    value={tournament.name}
-                    className="
+                      key={tournament.name}
+                      value={tournament.name}
+                      className="
                         shrink-0
                         rounded-full
                         border
@@ -284,53 +322,52 @@ export default function TournamentsSection({
 
                         md:px-5
                         md:text-xs
-                    "
+                      "
                     >
-                    {tournament.name}
+                      {tournament.name}
                     </TabsTrigger>
-                ))}
+                  ))}
                 </TabsList>
-            </div>
+              </div>
             </div>
 
             {menTournaments.map((tournament) => (
-            <TabsContent
+              <TabsContent
                 key={tournament.name}
                 value={tournament.name}
                 className="mt-0"
-            >
+              >
                 <TournamentCard tournament={tournament} />
-            </TabsContent>
+              </TabsContent>
             ))}
-        </Tabs>
+          </Tabs>
         </div>
 
         {/* WOMEN */}
         <div>
-        <div className="mb-8 flex items-center gap-3">
+          <div className="mb-8 flex items-center gap-3">
             <div className="h-3 w-3 rounded-full bg-pink-500" />
-
             <h3 className="text-3xl font-black uppercase text-white">
-            Damas
+              Damas
             </h3>
-        </div>
+          </div>
 
-        <Tabs defaultValue={womenTournaments[0]?.name}>
+          <Tabs defaultValue={womenTournaments[0]?.name}>
             {/* SCROLLABLE TABS */}
             <div className="relative mb-10">
-            {/* Fade Left */}
-            <div className="pointer-events-none absolute left-0 top-0 z-10 h-full w-10 bg-gradient-to-r from-black to-transparent" />
+              {/* Fade Left */}
+              <div className="pointer-events-none absolute left-0 top-0 z-10 h-full w-10 bg-gradient-to-r from-black to-transparent" />
 
-            {/* Fade Right */}
-            <div className="pointer-events-none absolute right-0 top-0 z-10 h-full w-10 bg-gradient-to-l from-black to-transparent" />
+              {/* Fade Right */}
+              <div className="pointer-events-none absolute right-0 top-0 z-10 h-full w-10 bg-gradient-to-l from-black to-transparent" />
 
-            <div className="overflow-x-auto scrollbar-none">
+              <div className="overflow-x-auto scrollbar-none">
                 <TabsList className="flex h-auto w-max min-w-full gap-3 bg-transparent p-0">
-                {womenTournaments.map((tournament) => (
+                  {womenTournaments.map((tournament) => (
                     <TabsTrigger
-                    key={tournament.name}
-                    value={tournament.name}
-                    className="
+                      key={tournament.name}
+                      value={tournament.name}
+                      className="
                         shrink-0
                         rounded-full
                         border
@@ -356,25 +393,25 @@ export default function TournamentsSection({
 
                         md:px-5
                         md:text-xs
-                    "
+                      "
                     >
-                    {tournament.name}
+                      {tournament.name}
                     </TabsTrigger>
-                ))}
+                  ))}
                 </TabsList>
-            </div>
+              </div>
             </div>
 
             {womenTournaments.map((tournament) => (
-            <TabsContent
+              <TabsContent
                 key={tournament.name}
                 value={tournament.name}
                 className="mt-0"
-            >
+              >
                 <TournamentCard tournament={tournament} />
-            </TabsContent>
+              </TabsContent>
             ))}
-        </Tabs>
+          </Tabs>
         </div>
       </div>
     </section>
